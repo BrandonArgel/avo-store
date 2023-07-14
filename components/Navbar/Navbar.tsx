@@ -5,12 +5,8 @@ export default function Navbar() {
   return (
     <nav>
       <menu>
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-        <Link href="/about">
-          <a>About</a>
-        </Link>
+        <Link href="/">Home</Link>
+        <Link href="/about">About</Link>
       </menu>
     </nav>
   )
