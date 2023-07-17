@@ -7,7 +7,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next",
+    "dev": "next",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --noEmit"
@@ -15,7 +15,10 @@
   "dependencies": {
     "next": "^13.4.10",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sass": "^1.63.6",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.4"
   },
   "devDependencies": {
     "@types/node": "^20.4.2",

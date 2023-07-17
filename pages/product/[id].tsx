@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import Navbar from '../../components/Navbar/Navbar'
+
+import ProductSummary from '@components/ProductSummary/ProductSummary'
+import Loading from '@components/Loading/Loading'
 
 const ProductPage = () => {
-  const {
-    query: { id },
-  } = useRouter()
-  const [product, setProduct] = useState<TProduct>()
+  const { query } = useRouter()
+  const [product, setProduct] = useState<TProduct | null>(null)
 
   useEffect(() => {
-    if (id) {
-      fetch(`/api/avo/${id}`)
-        .then((res) => res.json())
-        .then((data) => setProduct(data))
+    if (query.id) {
+      window
+        .fetch(`/api/avo/${query.id}`)
+        .then((response) => response.json())
+        .then((data: TProduct) => {
+          setProduct(data)
+        })
     }
-  }, [id])
+  }, [query.id])
 
   return (
-    <div>
-      <Navbar />
-      <section>
-        <h1>Página producto: {product?.name} </h1>
-      </section>
-    </div>
+    <main>
+      <div className="container">
+        {product == null ? <Loading /> : <ProductSummary product={product} />}
+      </div>
+    </main>
   )
 }
 
