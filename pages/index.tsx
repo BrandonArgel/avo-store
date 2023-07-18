@@ -5,7 +5,7 @@ import KawaiiHeader from '@components/KawaiiHeader/KawaiiHeader'
 import styles from '@styles/pages/Home.module.scss'
 
 export const getStaticProps = async () => {
-  const response = await fetch(`http://localhost:3000/api/avo`)
+  const response = await fetch(`https://brand-avocado-store.vercel.app/api/avo`)
   const { data: productList }: TAPIAvoResponse = await response.json()
 
   return {
