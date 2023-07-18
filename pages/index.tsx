@@ -1,32 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import ProductList from '@components/ProductList/ProductList'
-import Loading from '@components/Loading/Loading'
 import KawaiiHeader from '@components/KawaiiHeader/KawaiiHeader'
 import styles from '@styles/pages/Home.module.scss'
 
-const HomePage = () => {
-  const [productList, setProductList] = useState<TProduct[]>([])
-  const [loading, setLoading] = useState(false)
-  useEffect(() => {
-    setLoading(true)
-    window
-      .fetch('/api/avo')
-      .then((response) => response.json())
-      .then(({ data }) => {
-        setProductList(data)
-        setLoading(false)
-      })
-  }, [])
+export const getStaticProps = async () => {
+  const response = await fetch(`http://localhost:3000/api/avo`)
+  const { data: productList }: TAPIAvoResponse = await response.json()
 
+  return {
+    props: {
+      productList,
+    },
+  }
+}
+
+const HomePage = ({ productList }: { productList: TProduct[] }) => {
   return (
     <main className={styles.Home}>
       <div className="container">
         <KawaiiHeader />
         <div className={styles.HomeDescription}>
-          <Link href="/">¿Deberia comer un avo hoy?</Link>
+          <Link href="/yes-or-no">¿Deberia comer un avo hoy?</Link>
         </div>
-        {loading ? <Loading /> : <ProductList products={productList} />}
+        <ProductList products={productList} />
       </div>
     </main>
   )
