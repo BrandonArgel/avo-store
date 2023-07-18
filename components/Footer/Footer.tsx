@@ -36,20 +36,18 @@ const Footer = () => (
             <p>
               <a href="https://platzi.com/">Platzi y su curso de Next.JS</a> de
               Platzi implementado por{' '}
-              <a href="https://twitter.com/arangelpro">@arangelpro</a>
+              <a href="https://www.linkedin.com/in/brandargel/">@brandargel</a>
             </p>
             <List horizontal style={{ display: 'flex' }}>
               <List.Item
                 icon="twitter"
                 style={{ display: 'flex' }}
-                content={<a href="https://twitter.com/arangelpro">Twitter</a>}
+                content={<a href="https://twitter.com/BrandArgel">Twitter</a>}
               />
               <List.Item
                 icon="github"
                 style={{ display: 'flex' }}
-                content={
-                  <a href="https://github.com/arangelpro/avo-nextjs">GitHub</a>
-                }
+                content={<a href="https://github.com/BrandonArgel">GitHub</a>}
               />
             </List>
           </Grid.Column>
